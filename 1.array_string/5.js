@@ -1,7 +1,7 @@
 // make the same string using
 // add, remove or swap once.
 function solution(a, b) {
-  // Allow only one command.
+  // If difference of two strings are more than one, it means more than one command.
   if (Math.abs(a.length - b.length) > 1) return false;
 
   let arr1 = a.split("");

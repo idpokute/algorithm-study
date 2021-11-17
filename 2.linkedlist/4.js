@@ -12,27 +12,22 @@
  */
 var partition = function (head, x) {
   let dummyA = new ListNode();
-  let dummyHeadA = dummyA;
   let dummyB = new ListNode();
+  let dummyHeadA = dummyA;
   let dummyHeadB = dummyB;
-
-  let dummyHead = new ListNode(0, head);
   let node = head;
 
   while (node) {
     if (node.val < x) {
-      dummyA.next = new ListNode(node.val);
+      dummyA.next = node;
       dummyA = dummyA.next;
     } else {
-      dummyB.next = new ListNode(node.val);
+      dummyB.next = node;
       dummyB = dummyB.next;
     }
     node = node.next;
   }
-  if (dummyHeadA.next) {
-    dummyA.next = dummyHeadB.next;
-    return dummyHeadA.next;
-  } else {
-    return dummyHeadB.next;
-  }
+  dummyA.next = dummyHeadB.next;
+  dummyB.next = null;
+  return dummyHeadA.next;
 };
